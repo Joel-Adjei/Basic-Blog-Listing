@@ -1,7 +1,6 @@
 import React from "react";
 import AppButton from "./AppButton";
 import {BiMessageError} from "react-icons/bi";
-import AppSection from "./AppSection";
 
 const NotFound = () => {
     return (
