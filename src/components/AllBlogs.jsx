@@ -1,21 +1,15 @@
 import React from "react";
-import AppHeader from "../components/AppHeader";
-import BlogCard from "../components/BlogCard";
-import AppSection from "../components/AppSection";
-import AddBlogButton from "../components/AddBlogButton";
+import BlogCard from "./BlogCard";
+import AppSection from "./AppSection";
+import AppHeader from "./AppHeader";
 import {useBlog} from "../context/Context";
-import Navbar from "../components/Navbar";
 
 const AllBlogs = () => {
     const { blogs } = useBlog()
     return (
-        <>
-            <Navbar />
-            <AddBlogButton />
-            <AppSection className={"pt-23"}>
-
-                <AppHeader title_1={"All"} title_2={"Blogs"} className={"mb-10"} />
-
+        <div id={"All-Blogs"}>
+            <AppHeader title_1={"All"} title_2={"Blogs"} className={"sticky top-15 bg-white pt-10 pb-5"} />
+            <AppSection className={"bg-white pt-0"} >
                 <div className={"grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 "}>
                     {
                         blogs.map((blogs , index)=>
@@ -25,7 +19,7 @@ const AllBlogs = () => {
 
                 </div>
             </AppSection>
-        </>
+        </div>
 
     )
 }

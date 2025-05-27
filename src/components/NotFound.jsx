@@ -1,15 +1,16 @@
 import React from "react";
 import AppButton from "./AppButton";
 import {BiMessageError} from "react-icons/bi";
+import AppSection from "./AppSection";
 
 const NotFound = () => {
     return (
-        <div className={"size-full flex flex-col items-center justify-center"}>
-            <BiMessageError size={50} className={"text-gray-500"} />
-            <h4 className={"text-4xl font-[Montserrat] font-bold text-center lg:text-6xl"}>
+        <div className={"w-full h-[100vh] flex flex-col items-center justify-center gap-5"}>
+            <BiMessageError className={"text-gray-500 text-8xl lg:text-[200px]"} />
+            <h4 className={"text-3xl sm:text-4xl font-[Montserrat] text-blue-900 font-bold text-center px-0 lg:text-6xl"}>
                 Page Not Found
             </h4>
-            <AppButton className={"w-20 mt-2 h-1 bg-blue-900"} title={"Go to Home"} to={"/"} />
+            <AppButton className={"mt-2  bg-blue-900"} title={"Go to Home"} to={"/"} />
         </div>
     )
 }

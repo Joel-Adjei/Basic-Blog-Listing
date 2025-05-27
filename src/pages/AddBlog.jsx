@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import AppSection from "../components/AppSection";
-import {useNavigate} from "react-router";
+import {Link, useNavigate} from "react-router";
 import AppHeader from "../components/AppHeader";
 import {useBlog} from "../context/Context";
 import Navbar from "../components/Navbar";
@@ -34,23 +34,21 @@ const AddBlog = () => {
 
     const handleAddBlog = (e) => {
         e.preventDefault();
-        if (formData.title && formData.content && formData.author) {
+        if (formData.title && formData.content) {
             const newBlog = {
                 id: blogs.length + 1,
                 title: trim(formData.title, 17),
                 content: formData.content,
                 summary: trim(formData.content , 45),
                 date: formData.date,
-                author: trim(formData.author , 12)
             };
             
             setBlogs( (blogs)=> [ ...blogs ,newBlog]);
-            navigator("/all-blogs")
+            navigator("/")
             
             setFormData({
                 title: '',
                 content: '',
-                author: '',
                 date: new Date().toISOString().split('T')[0]
             });
         }
@@ -58,14 +56,16 @@ const AddBlog = () => {
 
     return (
         <>
-            <Navbar />
-
             <div onClick={()=> setExist("hidden")}
                  className={`size-full bg-blue-900/50 ${exist} shadow-lg items-center justify-center fixed top-0 right-0 z-90 duration-300 ease-in-ou`}>
-                <div className={"bg-white w-[70%] flex flex-col gap-3 items-center justify-center py-10 rounded-lg lg:w-100"}>
-                    <p className={"text-2xl font-[Montserrat] text-gray-700 font-bold"}>Do you want to end</p>
-                    <div>
-                        <AppButton to={"/all-blogs"} className={"bg-white border text-blue"} title={"Yes"} />
+                <div className={"bg-white px-7 font-[Montserrat] flex flex-col gap-3 items-center justify-center py-10 rounded-lg lg:w-100"}>
+                    <p className={"text-2xl text-gray-700 font-bold"}>Do you want to end</p>
+                    <div className={"flex gap-3"}>
+                        <Link to={"/"}>
+                            <button className={"bg-gray-100 rounded cursor-pointer text-blue-900 font-bold font- text-sm px-7 py-2 "}>
+                                Yes
+                            </button>
+                        </Link>
                         <AppButton onClick={()=> setExist("hidden")} className={""} title={"No, Go Back"} />
                     </div>
                 </div>
@@ -82,17 +82,6 @@ const AddBlog = () => {
                             onChange={handleInputChange}
                             placeholder="Enter your blog title"
                             required
-                    />
-
-                    <Input
-                        label={"Autor *"}
-                        type="text"
-                        id="author"
-                        name="author"
-                        value={formData.author}
-                        onChange={handleInputChange}
-                        placeholder="Your name"
-                        required
                     />
 
                     <Input
@@ -132,7 +121,7 @@ const AddBlog = () => {
                         <button
                             type="button"
                             onClick={() => setExist("flex")}
-                            className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 py-2 rounded-lg font-medium transition-colors"
+                            className="cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 py-2 rounded-lg font-medium transition-colors"
                         >
                             Cancel
                         </button>

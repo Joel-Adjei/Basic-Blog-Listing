@@ -10,11 +10,7 @@ const BlogCard = ({blog , key }) => {
                     {blog.title}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">{blog.summary}</p>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                    <div className="flex items-center gap-1">
-                        <CgUser size={17} />
-                        <p>{blog.author}</p>
-                    </div>
+                <div className="text-sm text-gray-500">
                     <div className="flex items-center gap-1">
                         <CgCalendar size={17} />
                         <p>{blog.date}</p>
