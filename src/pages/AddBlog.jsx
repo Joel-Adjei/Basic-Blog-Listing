@@ -58,7 +58,7 @@ const AddBlog = () => {
                 date: formData.date,
             };
             
-            setBlogs( (blogs)=> [ ...blogs ,newBlog]);
+            setBlogs( (blogs)=> [ newBlog , ...blogs ]);
             setDisplayFeed(true)
             setFormData({
                 title: '',
